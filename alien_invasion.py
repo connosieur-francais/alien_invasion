@@ -188,6 +188,7 @@ class AlienInvasion:
             for aliens in collisions.values():
                 self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
+            self.sb.check_high_score()
         
         if not self.aliens:
             self._level_up()
@@ -302,6 +303,6 @@ class AlienInvasion:
         pygame.display.flip()
     
 if __name__ == "__main__":
-    # Make a game isntance, and run the game
+    # Make a game instance, and run the game
     ai = AlienInvasion()
     ai.run_game()
