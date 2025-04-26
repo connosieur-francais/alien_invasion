@@ -47,7 +47,7 @@ class Scoreboard:
         
         # Display the score at the top right of the screen
         self.score_rect = self.score_image.get_rect()
-        self.score_rect.x = self.screen_rect.right - 20
+        self.score_rect.right = self.screen_rect.right - 20
         self.score_rect.top = 20
         
     def show_score(self):
