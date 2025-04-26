@@ -40,9 +40,14 @@ class AlienInvasion:
     def __init__(self):
         """Initialize the game, and create game resources"""
         pygame.init()
+        self.clock = pygame.time.Clock() #Controls the frame rate
         
         self.screen = pygame.display.set_mode((1200,800))
+        # This is a "Surface" which allows game element to be displayed
         pygame.display.set_caption("Alien Invasion")
+        
+        # Set the Background Color
+        self.bg_color = (230, 230, 230)
         
     def run_game(self):
         """Start the main loop for the game."""
@@ -51,9 +56,13 @@ class AlienInvasion:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
+                
+            # Redraw the screen during each pass through the loop
+            self.screen.fill(self.bg_color)
                     
             # Make the most recently drawn screen visible
             pygame.display.flip()
+            self.clock.tick(60) # The number inside the () determines how many frames per second the game should run
     
 if __name__ == "__main__":
     # Make a game isntance, and run the game
