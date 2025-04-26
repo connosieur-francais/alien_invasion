@@ -1,5 +1,5 @@
 import pygame.font
-from pygame import Group
+from pygame.sprite import Group
 
 from ship import Ship
 
@@ -7,6 +7,7 @@ class Scoreboard:
     """A class to report scoring information."""
     
     def __init__(self, ai_game):
+        self.ai_game = ai_game
         self.screen = ai_game.screen
         self.screen_rect = self.screen.get_rect()
         self.settings = ai_game.settings
