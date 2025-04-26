@@ -58,9 +58,7 @@ class AlienInvasion:
         self.clock = pygame.time.Clock() #Controls the frame rate
         self.settings = Settings() # Create an instance of Settings and assign it to the self.settings variable
         
-        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        self.settings.screen_width = self.screen.get_rect().width
-        self.settings.screen_height = self.screen.get_rect().height
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         # This is a "Surface" which allows game element to be displayed
         pygame.display.set_caption("Alien Invasion")
         
@@ -121,6 +119,10 @@ class AlienInvasion:
         # Update bullet positions
         self.bullets.update()
         
+        # Check for any bullets that have hit aliens.
+        #   If so, get rid of the bullet and the alien.
+        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+        
         # Get rid of bullets that have dissapeared.
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
@@ -133,8 +135,9 @@ class AlienInvasion:
         self._check_fleet_edges()
     
     def _create_alien(self, x_position, y_position):
+        """Create an Alien and place it in the fleet."""
         new_alien = Alien(self)
-        new_alien_x = x_position
+        new_alien.x = x_position
         new_alien.rect.x = x_position
         new_alien.rect.y = y_position
         self.aliens.add(new_alien)
