@@ -1,5 +1,5 @@
 import pygame
-from pygame.sprite import Group
+from pygame.sprite import Sprite
 
 class Ship(Sprite):
     
