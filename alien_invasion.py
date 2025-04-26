@@ -56,6 +56,7 @@ class AlienInvasion:
         """Start the main loop for the game."""
         while True:
             self.check_events()
+            self.ship.update()
             self.update_screen()
             self.clock.tick(60) # The number inside the () determines how many frames per second the game should run
     
@@ -65,12 +66,12 @@ class AlienInvasion:
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
-                    # Move the ship to the left
-                    self.ship.rect.x -= 1
-                elif event.key == pygame.K_d:
+                if event.key == pygame.K_d:
                     # Move the ship to the right
-                    self.ship.rect.x += 1
+                    self.ship.moving_right = True
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_d:
+                    self.ship.moving_right = False
                     
                     
     
