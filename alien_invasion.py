@@ -59,13 +59,8 @@ class AlienInvasion:
         while True:
             self.check_events()
             self.ship.update()
-            self.bullets.update()
-            
-            # Get rid of bullets that have dissapeared.
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-            self.update_screen()
+            self._update_bullets()
+            self._update_screen()
             self.clock.tick(60) # The number inside the () determines how many frames per second the game should run
     
     def check_events(self):
@@ -104,7 +99,17 @@ class AlienInvasion:
             self.bullets.add(new_bullet)
                     
     
-    def update_screen(self):
+    def _update_bullets(self):
+        """Update position of bullets and get rid of old bullets."""
+        # Update bullet positions
+        self.bullets.update()
+        
+        # Get rid of bullets that have dissapeared.
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+    
+    def _update_screen(self):
         """Updates images on the screen, and flip to the new screen"""
         
         # Redraw the screen during each pass through the loop
