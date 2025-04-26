@@ -127,6 +127,7 @@ class AlienInvasion:
             self._start_game()
     
     def _start_game(self):
+        self.settings.initialize_dynamic_settings()
         #Hide the mouse cursor
         pygame.mouse.set_visible(False)
         #Reset the game statistics
@@ -179,9 +180,13 @@ class AlienInvasion:
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
         
         if not self.aliens:
-            # Destroy existing bullets and create a new fleet.
-            self.bullets.empty()
-            self._create_fleet()
+            self._level_up()
+    
+    def _level_up(self):
+        # Destroy existing bullets and create a new fleet.
+        self.bullets.empty()
+        self._create_fleet()
+        self.settings.increase_speed()
     
     def _check_aliens_bottom(self):
         """Check if any aliens have reached the bottom of the screen"""
