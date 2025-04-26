@@ -76,6 +76,7 @@ class AlienInvasion:
             self.check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
             self.clock.tick(60) # The number inside the () determines how many frames per second the game should run
     
@@ -124,6 +125,10 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+    
+    def _update_aliens(self):
+        """Update the positions of all aliens in the fleet"""
+        self.aliens.update()
                 
     def _create_fleet(self):
         """Create the fleet of aliens"""
