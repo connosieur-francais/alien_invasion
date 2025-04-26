@@ -80,9 +80,12 @@ class AlienInvasion:
         """Start the main loop for the game."""
         while True:
             self.check_events()
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
+            
+            if self.game_active:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
+            
             self._update_screen()
             self.clock.tick(60) # The number inside the () determines how many frames per second the game should run
     
