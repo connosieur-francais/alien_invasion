@@ -110,6 +110,8 @@ class AlienInvasion:
         """Start a new game when the player clicks Play"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
+            #Hide the mouse cursor
+            pygame.mouse.set_visible(False)
             #Reset the game statistics
             self.stats.reset_stats()
             self.game_active = True
@@ -202,6 +204,7 @@ class AlienInvasion:
             sleep(0.5)
         else:
             self.game_active = False
+            pygame.mouse.set_visible(True)
     
     def _update_aliens(self):
         """Update the positions of all aliens in the fleet"""
