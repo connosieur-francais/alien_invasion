@@ -47,9 +47,7 @@ class AlienInvasion:
         self.clock = pygame.time.Clock() #Controls the frame rate
         self.settings = Settings() # Create an instance of Settings and assign it to the self.settings variable
         
-        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        self.settings.screen_width = self.screen.get_rect().width
-        self.settings.screen_height = self.screen.get_rect().height
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         # This is a "Surface" which allows game element to be displayed
         pygame.display.set_caption("Alien Invasion")
         
@@ -67,7 +65,6 @@ class AlienInvasion:
             for bullet in self.bullets.copy():
                 if bullet.rect.bottom <= 0:
                     self.bullets.remove(bullet)
-                    
             self.update_screen()
             self.clock.tick(60) # The number inside the () determines how many frames per second the game should run
     
