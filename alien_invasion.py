@@ -29,6 +29,16 @@ Be sure to save all files for the project to this folder, so your import stateme
 
 7. If the player loses three ships, the game ends.
 
+ADDING THE ALIENS
+
+- Add a single alien to the top left corner of the screen, with appropriate spacing around it
+- Fill the upper portion of the screen with as many aliens as we can fit horizontally.
+  We'll then create additional rows of aliens until we have a full fleet.
+- Make the fleet move sideways and down until the entire fleet is shot down, an alien hits the ship
+  or an alien hits the ground. If the entire fleet is shot down, we'll create a new fleet.
+  If an alien hits the ship or the ground, we'll destroy the ship and create a new fleet.
+- Limit the number of ships the player can use, and end the game when the player has used up
+  the alloted number of ships.
 """
 import sys
 
