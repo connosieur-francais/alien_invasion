@@ -18,6 +18,9 @@ class Scoreboard:
         self.font = pygame.font.SysFont(None, 48)
         
         # Prepare the initial score, high score, level and ships for the image.
+        self.prep_images()
+    
+    def prep_images(self):
         self.prep_score()
         self.prep_high_score()
         self.prep_level()

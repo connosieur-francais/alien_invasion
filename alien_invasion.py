@@ -136,9 +136,7 @@ class AlienInvasion:
         pygame.mouse.set_visible(False)
         #Reset the game statistics
         self.stats.reset_stats()
-        self.sb.prep_score()
-        self.sb.prep_level()
-        self.sb.prep_ships()
+        self.sb.prep_images()
         self.game_active = True
         
         # Get rid of any remaining bullets and aliens
